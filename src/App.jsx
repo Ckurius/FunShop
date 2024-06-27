@@ -16,6 +16,7 @@ import Loading from './components/loading';
 function App() {
   return (
     <>
+      <Navbar />
       <Loading />
     </>
   );

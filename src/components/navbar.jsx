@@ -2,37 +2,19 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        {/* The Link component takes care of updating the history in the browser */}
-        <Link
-          to="/"
-          className="text-white text-lg font-bold"
-        >
-          MyApp
-        </Link>
-        <div className="flex space-x-4">
-          <Link
-            to="/"
-            className="text-gray-300 hover:text-white"
-          >
-            Home
-          </Link>
-          <Link
-            to="/wbs-live-examples-target/about"
-            className="text-gray-300 hover:text-white"
-          >
-            About
-          </Link>
-          <Link
-            to="/wbs-live-examples-target/contact"
-            className="text-gray-300 hover:text-white"
-          >
-            Contact
-          </Link>
-        </div>
+    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 flex justify-between items-center w-4/5 p-4 pointer-events-none">
+      <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-lg transform transition duration-300 hover:translate-y-1 hover:shadow-xl pointer-events-auto">
+        Shop
+      </button>
+      <div className="flex space-x-4 pointer-events-auto">
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-lg transform transition duration-300 hover:translate-y-1 hover:shadow-xl">
+          Home
+        </button>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-lg transform transition duration-300 hover:translate-y-1 hover:shadow-xl">
+          Warenkorb
+        </button>
       </div>
-    </nav>
+    </div>
   );
 };
 
