@@ -7,17 +7,19 @@ import {
   RouterProvider,
 } from 'react-router-dom'; // Import required components and functions
 
-import navbar from '/src/components/navbar';
-import { useState } from 'react';
-
 import Navbar from './components/navbar';
 import Loading from './components/loading';
+import Fetchdata from './components/fetchData';
 
 function App() {
   return (
     <>
       <Navbar />
-      <Loading />
+      <div>
+        <Fetchdata />
+      </div>
+
+      {/* <Loading /> */}
     </>
   );
 }
