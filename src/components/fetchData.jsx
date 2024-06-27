@@ -31,18 +31,19 @@ const fetchData = () => {
     <div className="flex flex-wrap justify-start gap-4 mt-24">
       {data.map((item) => (
         <div className="card card-compact bg-base-100 w-96 shadow-xl mb-4">
-          <figure>
+          <figure className="flex-shrink-0 h-48">
             <img
               src={item.image}
               alt="Shoes"
+              className="object-cover w-full h-full"
             />
           </figure>
-          <div className="card-body">
-            <h2 className="card-title">{item.title}</h2>
-            <p>{item.description}</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
+          <div className="card-body flex flex-col justify-between flex-grow">
+            <h2 className="card-title text-center">{item.title}</h2>
+            <p className="flex-grow">{item.description}</p>
+            <p className="text-right mb-0">{item.price}€</p>
+
+            <button className="btn btn-primary mt-0">Buy Now</button>
           </div>
         </div>
 
