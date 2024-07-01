@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import addbtntocart from './addtocart';
 
 const fetchData = () => {
   // State für die Daten
@@ -13,6 +14,7 @@ const fetchData = () => {
         const response = await fetch('https://fakestoreapi.com/products');
         const result = await response.json();
         setData(result);
+        localStorage.setItem('producte', JSON.stringify(result));
         setLoading(false);
       } catch (error) {
         console.error('Fehler beim Abrufen der Daten:', error);
@@ -28,33 +30,43 @@ const fetchData = () => {
   }
 
   return (
-    <div className="flex flex-wrap justify-start gap-4 mt-24">
+    <div className="flex flex-wrap justify-center gap-4 mt-24">
       {data.map((item) => (
-        <div className="card card-compact bg-base-100 w-96 shadow-xl mb-4">
-          <figure className="flex-shrink-0 h-48">
+        <div className="card card-compact bg-base-300 w-96 h-26 border-base-300 shadow-xl  mb-4 border">
+          <figure className="flex-shrink-0 ">
             <img
               src={item.image}
-              alt="Shoes"
-              className="object-cover w-full h-full"
+              alt="Kein Bild"
+              className="object-cover h-24 flex-shrink-0"
             />
           </figure>
           <div className="card-body flex flex-col justify-between flex-grow">
-            <h2 className="card-title text-center">{item.title}</h2>
-            <p className="flex-grow">{item.description}</p>
+            {/* <h2 className="card-title text-center h-24">{item.title}</h2> */}
+
+            {/* <p className="flex-grow">{item.description}</p> */}
+            <div
+              tabIndex={0}
+              className="collapse text-center h-full collapse-arrow border-base-300 bg-base-200 border"
+            >
+              <div className="collapse-title text-xl font-medium">
+                {item.title}
+              </div>
+              <div className="collapse-content ">
+                <p>{item.description}</p>
+              </div>
+            </div>
+
             <p className="text-right mb-0">{item.price}€</p>
 
-            <button className="btn btn-primary mt-0">Buy Now</button>
+            <button
+              className="btn btn-primary mt-0"
+              onClick={() => addbtntocart(item.id)}
+              key={item.id}
+            >
+              Buy Now
+            </button>
           </div>
         </div>
-
-        /*           <div className="flex flex-col bg-gray-100 p-4 rounded-md mb-4">
-            (<li className="bg-white p-2 rounded shadow">{item.id}</li>), (
-            <li className="bg-white p-2 rounded shadow">{item.title}</li>), (
-            <li className="bg-white p-2 rounded shadow">{item.price}</li>), (
-            <li className="bg-white p-2 rounded shadow">{item.category}</li>), (
-            <li className="bg-white p-2 rounded shadow">{item.description}</li>)
-            ,<li className="bg-white p-2 rounded shadow">{item.image}</li>)
-          </div> */
       ))}
     </div>
   );
